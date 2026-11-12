@@ -1,0 +1,400 @@
+/* juliediorio.com — static rebuild of the Wix site */
+
+:root {
+  --ink: #1c1a18;
+  --tan: #c9a990;
+  --mist: #f4f8f7;
+  --nav-active: #555255;
+  --display: "Cinzel", serif;
+  --body: "Avenir", "Avenir Next", "Nunito Sans", sans-serif;
+  --ui: "Open Sans", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 30px;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p, ul { margin: 0; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; }
+
+.wrap {
+  width: 980px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.u { text-decoration: underline; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 4px;
+  min-width: 129px;
+  border-radius: 100px;
+  font-family: var(--display);
+  font-size: 16px;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color .4s ease, color .4s ease, border-color .4s ease;
+}
+.btn-outline { border: 1px solid var(--tan); color: var(--tan); background: transparent; }
+.btn-outline:hover { background: var(--tan); color: #fff; }
+.btn-solid { background: var(--tan); color: #fff; border: 1px solid var(--tan); }
+.btn-solid:hover { background: transparent; color: var(--tan); }
+
+/* ---------- Header ---------- */
+
+.site-header { height: 304px; background: #fff; }
+.site-header .wrap { width: auto; margin: 0 clamp(41px, calc((100vw - 1024px) * 0.152 + 41px), 80px); }
+.header-top {
+  height: 74px;
+  padding: 22px 0 0 1px;
+  font-family: var(--ui);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.header-rule {
+  margin: 0 80px;
+  border: 0;
+  border-top: 1px solid rgba(28, 26, 24, .85);
+}
+.header-main {
+  display: flex;
+  align-items: center;
+  height: 208px;
+  padding: 0;
+}
+.brand { display: flex; align-items: center; }
+.logo {
+  --logo-size: 200px;
+  position: relative;
+  display: block;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  flex: none;
+}
+.logo img { width: 100%; height: 100%; object-fit: contain; }
+.brand-text { margin-left: 22px; font-family: var(--display); }
+.brand-name { font-size: 24px; line-height: 35px; }
+.brand-tag { font-size: 16px; line-height: 25px; margin-top: -2px; }
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  font-family: var(--ui);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  padding-top: 28px;
+}
+.site-nav a.nav-link { padding: 0 10px; transition: color .4s ease; }
+.site-nav a.nav-link:hover,
+.site-nav a.nav-link.active { color: var(--nav-active); }
+.site-nav .btn { margin: -10px 0 0 5px; width: 183px; }
+
+/* ---------- Hero ---------- */
+
+.split { display: grid; grid-template-columns: 1fr 1fr; }
+.split-media { position: relative; overflow: hidden; }
+.px-layer { position: absolute; inset: 0; }
+.split-media img {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* Parallax, matching the original site: each photo is as tall as the window
+   (or its section, if taller) and moves at 20% of scroll speed, so the section
+   slides over it. Driven by the browser's own scroll timeline, so it stays
+   in step with scrolling. Wide screens only. */
+@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+  .split-media, .quote-media { view-timeline: --px block; }
+  .px-layer { will-change: transform; }
+  .split-media .px-layer img, .quote-media .px-layer img { height: max(100vh, 100%); }
+  @supports (animation-timeline: view()) {
+    .px-layer {
+      animation: px-drift linear both;
+      animation-timeline: --px;
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes px-drift {
+  from { transform: translate3d(0, -80vh, 0); }
+  to   { transform: translate3d(0, 80%, 0); }
+}
+.split-text { padding-left: calc(25vw - 230px); }
+.split-text > * { max-width: 460px; }
+
+.hero { height: 720px; }
+.hero .split-media img { object-position: 55% 47%; }
+.hero h1 {
+  margin-top: 204px;
+  font-size: 72px;
+  line-height: 85px;
+  color: var(--tan);
+}
+
+/* ---------- Everfiner ---------- */
+
+.everfiner { background: var(--mist); min-height: 666px; padding: 25px 0 60px; }
+.everfiner h2 {
+  margin-left: 389px;
+  font-size: 40px;
+  line-height: 50px;
+  color: var(--tan);
+}
+.everfiner-row { display: flex; margin-top: 27px; }
+.everfiner-embed { width: 426px; padding-left: 29px; flex: none; }
+.everfiner-embed iframe { border: 0; width: 350px; height: 665px; display: block; }
+.everfiner-text { width: 460px; line-height: 27px; }
+.everfiner-text .btn { margin: 0 0 0 -29px; min-width: 148px; }
+
+/* ---------- Bio ---------- */
+
+.bio { min-height: 1240px; }
+.bio .split-media img { object-position: 51% 73%; }
+.bio .split-text { padding-top: 144px; padding-bottom: 120px; }
+.bio h2 { font-size: 24px; line-height: 35px; }
+.bio .copy { margin-top: 14px; }
+.bio .copy, .workshop-list, .past-copy { line-height: 30.6px; }
+.bio .copy p + p { margin-top: 30.6px; }
+.bio .btn { margin-top: 37px; }
+
+/* ---------- Private lessons ---------- */
+
+.lessons { padding: 81px 0 91px; text-align: center; }
+.lessons .wrap { width: max(980px, calc(100% - 160px)); }
+.section-title {
+  font-size: 40px;
+  line-height: 50px;
+  color: var(--tan);
+  text-align: center;
+}
+.lessons .btn-row { margin-top: 49px; display: flex; justify-content: center; gap: 20px; }
+.instruments {
+  margin: 80px 20px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 40px;
+}
+.instrument { min-height: 300px; }
+.instrument img {
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+.instrument h3 {
+  margin-top: 39px;
+  font-size: 24px;
+  line-height: 35px;
+  color: var(--tan);
+}
+
+/* ---------- Workshops / Past projects ---------- */
+
+.band { background: var(--mist); padding-top: 41px; }
+.workshops { padding-bottom: 144px; }
+.past { padding-bottom: 119px; }
+
+.workshop-list {
+  width: 744px;
+  max-width: calc(100% - 40px);
+  margin: 17px auto 0;
+  padding-left: 0;
+  transform: translateX(18px);
+}
+.workshop-list, .workshop-list ul { list-style: disc; }
+.workshop-list ul { list-style: circle; padding-left: 36px; }
+.workshop-list > li { margin-left: 0; }
+
+.past-copy {
+  width: 780px;
+  max-width: calc(100% - 40px);
+  margin: 17px auto 0;
+  text-align: center;
+}
+.past-copy .gap { height: 30.6px; }
+.past-copy ul { list-style: disc outside; padding: 0 0 0 18px; }
+
+/* ---------- Strip gallery ---------- */
+
+.strip {
+  position: relative;
+  height: 575px;
+  margin-top: 37px;
+  overflow: hidden;
+  background: #fff;
+  user-select: none;
+}
+.strip-track {
+  display: flex;
+  gap: 5px;
+  height: 100%;
+  will-change: transform;
+  transition: transform .9s cubic-bezier(.4, 0, .2, 1);
+}
+.strip-track.no-anim { transition: none; }
+.strip-slide {
+  flex: none;
+  height: 100%;
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity .9s ease;
+}
+.strip-track.no-anim .strip-slide { transition: none; }
+.strip-slide.active { opacity: 1; }
+.strip-slide img { height: 100%; width: 100%; object-fit: cover; }
+
+/* ---------- Testimonial ---------- */
+
+.quote {
+  position: relative;
+  min-height: 560px;
+  background: var(--ink);
+  color: #fff;
+  overflow: clip; /* not 'hidden': that would capture the parallax scroll timeline */
+}
+.quote-media { position: absolute; inset: 0; overflow: hidden; }
+.quote-media img {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .75;
+}
+.quote-text {
+  position: relative;
+  width: 820px;
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  padding: 160px 0 100px;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+.quote-text p + p { margin-top: 30px; }
+.quote-text p.tight { margin-top: 0; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  height: 259px;
+  padding-top: 13px;
+  background: #fff;
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 400;
+}
+.site-footer svg { width: 60px; height: 60px; fill: var(--tan); display: block; margin: 0 auto; }
+.footer-title { margin-top: 15px; font-size: 24px; line-height: 35px; }
+.footer-line { font-size: 20px; line-height: 30px; }
+.footer-title + .footer-line { margin-top: 17px; }
+.footer-copy { font-family: var(--ui); font-size: 14px; line-height: 20px; }
+
+/* ---------- Music Lessons Portal ---------- */
+
+.portal { padding: 0 80px 320px; }
+.portal-grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+}
+.portal-col { background: var(--mist); }
+.portal-cell {
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+.portal-cell img { margin-bottom: 40px; height: 40px; width: auto; }
+.portal-cell img.wide { height: 80px; margin-bottom: 12px; }
+.portal-cell .btn { width: 213px; max-width: 90%; }
+.portal-cell .btn.w240 { width: 240px; }
+
+/* ---------- Policy / Reschedule ---------- */
+
+.embed-policy { display: block; width: 100%; height: 2050px; border: 0; margin-top: -121px; }
+.header-over { position: relative; z-index: 1; }
+.embed-form { display: block; width: 982px; max-width: 100%; height: 2135px; border: 0; margin: 0 auto; }
+.email-button {
+  display: block;
+  position: relative;
+  width: 255px; height: 255px;
+  margin: 5px auto 5px;
+}
+.email-button img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .2s ease; }
+.email-button img.open { opacity: 0; }
+.email-button:hover img.open { opacity: 1; }
+.email-button:hover img.closed { opacity: 0; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 1000px) {
+  .wrap, .site-header .wrap, .lessons .wrap { width: 100%; margin: 0 auto; padding: 0 20px; }
+  .site-header { height: auto; padding-bottom: 20px; }
+  .header-top { padding-left: 0; height: 54px; text-align: center; }
+  .header-rule { margin: 0 20px; }
+  .header-main { height: auto; flex-direction: column; padding: 16px 0 0; }
+  .brand-text { margin: 10px 0 0; text-align: center; }
+  .site-nav { margin: 0; padding-top: 16px; flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+  .site-nav .btn { margin: 0 0 0 5px; width: auto; padding: 0 14px; }
+
+  .split { grid-template-columns: 1fr; }
+  .hero { height: auto; }
+  .hero .split-media { height: 90vw; max-height: 620px; }
+  .hero h1 { margin: 40px 0; font-size: 48px; line-height: 58px; }
+  .split-text { padding: 0 20px; }
+  .bio { min-height: 0; }
+  .bio .split-media { height: 110vw; max-height: 760px; }
+  .bio .split-text { padding: 50px 20px 60px; }
+
+  .everfiner { padding-bottom: 50px; }
+  .everfiner h2 { margin-left: 0; text-align: center; }
+  .everfiner-row { flex-direction: column; align-items: center; gap: 30px; }
+  .everfiner-embed { width: auto; padding: 0; }
+  .everfiner-embed iframe { max-width: 100%; }
+  .everfiner-text { width: 100%; max-width: 460px; }
+  .everfiner-text .btn { margin: 20px 0 0; }
+
+  .section-title { font-size: 32px; line-height: 42px; }
+  .lessons .btn-row { flex-wrap: wrap; }
+  .instruments { margin: 60px 0 0; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .instrument { min-height: 0; }
+  .workshop-list { transform: none; padding-left: 20px; }
+
+  .strip { height: 60vw; max-height: 575px; }
+  .quote-text { padding: 90px 0; }
+
+  .portal { padding: 0 20px 80px; }
+  .portal-grid { grid-template-columns: 1fr; row-gap: 20px; }
+  .embed-policy { margin-top: 0; }
+}
