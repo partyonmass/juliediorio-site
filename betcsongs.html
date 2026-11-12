@@ -1,0 +1,352 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>BETC Songleading 2026–27</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#F3F5FA; --surface:#FFFFFF; --ink:#1B2240; --muted:#5D6585; --line:#DCE1ED;
+  --accent:#2F4AA8; --honey:#E3A62A; --on-honey:#2A1E00; --done:#2E8A5A; --done-bg:#EAF5EF; --field:#F6F8FC; --warn:#B4441F;
+  --display:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;
+  --body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0F1328; --surface:#171D37; --ink:#E7EAF6; --muted:#9AA2C3; --line:#2A3256;
+  --accent:#93A8FF; --honey:#F2BE4A; --done:#5CC48C; --done-bg:#16302A; --field:#1D2442; --warn:#FF9A73; color-scheme:dark}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:16px;padding-block:28px 80px;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,36px);line-height:1.1;margin:4px 0 0}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.stat b{color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.notice{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:8px;padding:10px 14px;font-size:14px}
+.list{display:flex;flex-direction:column;gap:12px}
+.session{display:grid;grid-template-columns:11rem 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+.session.done{background:var(--done-bg);border-color:transparent}
+.when{display:flex;gap:12px;align-items:flex-start}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:16px;min-width:0}
+.session.collapsed .groups{display:none}
+.head{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;background:none;border:0;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.head-top{display:flex;align-items:center;gap:6px}
+.chev{width:16px;height:16px;color:var(--muted);flex:none;transition:transform .15s}
+.session.collapsed .chev{transform:rotate(-90deg)}
+.hol{display:flex;flex-direction:column;gap:4px;align-items:flex-start;margin-top:4px;font-size:12px;color:var(--muted)}
+.hol b{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.hol .h{display:inline-block;border-radius:6px;padding:3px 8px;line-height:1.3;background:var(--field);border:1px solid var(--line);color:var(--ink);font-size:12px}
+.hol .h i{display:block;font-style:normal;color:var(--muted);font-size:11px}
+.hol .h.past{background:transparent;color:var(--muted)}
+.hol .h.now{border-color:var(--honey)}
+.sum{display:none;font-size:13px;color:var(--muted)}
+.session.collapsed .sum{display:block}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.link{background:none;border:0;padding:4px 0;font:700 13px var(--body);color:var(--accent);cursor:pointer}
+.date{display:block;font-family:var(--display);font-weight:700;font-size:19px;line-height:1.15}
+.dow{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.next{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;color:var(--accent);border:1px solid currentColor;border-radius:999px;padding:1px 7px}
+.check{flex:none;width:30px;height:30px;border-radius:8px;border:2px solid var(--line);background:var(--surface);color:transparent;display:grid;place-items:center;cursor:pointer;padding:0}
+.check:hover{border-color:var(--done)}
+.check[aria-pressed="true"]{background:var(--done);border-color:var(--done);color:var(--surface)}
+.check svg{width:18px;height:18px}
+.grp{min-width:0;display:flex;flex-direction:column;gap:8px}
+.grp-label{font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.songs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.songs li{display:flex;align-items:center;gap:8px}
+.n{width:1.1em;text-align:right;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+.songs input{flex:1;min-width:0;font:inherit;color:var(--ink);background:var(--field);border:1px solid transparent;border-radius:7px;padding:6px 9px}
+.session.done .songs input{background:var(--surface)}
+.songs input::placeholder{color:var(--muted);opacity:.55}
+.songs input:focus{outline:none;border-color:var(--accent);background:var(--surface)}
+.penny{flex:none;height:28px;min-width:28px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--muted);font:700 12px/1 var(--body);cursor:pointer;padding:0 8px}
+.penny:hover{border-color:var(--honey);color:var(--ink)}
+.penny[aria-pressed="true"]{background:var(--honey);border-color:var(--honey);color:var(--on-honey)}
+.penny .full{display:none}
+.penny[aria-pressed="true"] .full{display:inline}
+.penny[aria-pressed="true"] .short{display:none}
+.julie{flex:none;height:28px;min-width:28px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--muted);font:700 12px/1 var(--body);cursor:pointer;padding:0 8px}
+.julie:hover{border-color:var(--accent);color:var(--ink)}
+.julie[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.julie .full{display:none}
+.julie[aria-pressed="true"] .full{display:inline}
+.julie[aria-pressed="true"] .short{display:none}
+.chip-j{display:inline-grid;place-items:center;height:22px;padding:0 8px;border-radius:999px;background:var(--accent);color:var(--surface);font-weight:700;font-size:11px}
+.chip-p{display:inline-grid;place-items:center;height:22px;padding:0 8px;border-radius:999px;background:var(--honey);color:var(--on-honey);font-weight:700;font-size:11px}
+.chip-c{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--done);color:var(--surface)}
+.chip-c svg{width:13px;height:13px}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.status{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted);box-shadow:0 4px 14px rgba(0,0,0,.12);display:flex;gap:10px;align-items:center}
+.status.err{color:var(--warn);border-color:var(--warn)}
+.btn{font:700 14px var(--body);background:var(--accent);color:var(--surface);border:0;border-radius:8px;padding:9px 16px;cursor:pointer}
+.btn.small{font-size:12px;padding:5px 10px;border-radius:999px}
+.ro .songs input,.ro .check,.ro .penny,.ro .julie{pointer-events:none}
+@media (max-width:860px){.session{grid-template-columns:1fr}.songs input{font-size:16px}}
+@media (max-width:640px){.wrap{padding-block:16px 70px;gap:14px}.groups{grid-template-columns:1fr}.session{padding:12px;gap:12px}.session.collapsed{gap:0}h1{font-size:24px}.stat{font-size:12px;padding:4px 10px}}
+@media (prefers-reduced-motion:no-preference){.check,.penny,.songs input{transition:background-color .15s,border-color .15s,color .15s}}
+</style>
+</head>
+<body>
+<main id="root" class="wrap"></main>
+<div class="status" id="status" hidden></div>
+
+<script>
+/* ================== SETUP ==================
+   Paste your Google Apps Script web app URL between the quotes.
+   Leave it empty and the page still works, but saves only in the
+   browser you're using (Penny wouldn't see your changes). */
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbylQFedYNmlGDg3NZPVPRP6OCjzomnx1AxSzo-F63T0qgsmZkwin9uvgmzJducw8fw/exec';
+/* =========================================== */
+
+(function(){
+  var SEED = {"dates":[
+    {"label":"October 4","iso":"2026-10-04","done":false,"a":[{"t":"Apples + Honey","p":true},{"t":"Shofar Blast","p":true},{"t":"Garden Song","p":true},{"t":"Tree of Life?","p":false}],"b":[{"t":"Sweet As Honey","p":true},{"t":"Rabbi Ben Bag Bag","p":false},{"t":"Hineini","p":false},{"t":"Build a Sukkah","p":false}]},
+    {"label":"October 18","iso":"2026-10-18","done":false,"a":[],"b":[]},
+    {"label":"November 1","iso":"2026-11-01","done":false,"a":[],"b":[]},
+    {"label":"November 22","iso":"2026-11-22","done":false,"a":[],"b":[]},
+    {"label":"December 6","iso":"2026-12-06","done":false,"a":[],"b":[]},
+    {"label":"December 13","iso":"2026-12-13","done":false,"a":[],"b":[]},
+    {"label":"January 10","iso":"2027-01-10","done":false,"a":[],"b":[]},
+    {"label":"January 31","iso":"2027-01-31","done":false,"a":[],"b":[]},
+    {"label":"March 7","iso":"2027-03-07","done":false,"a":[],"b":[]},
+    {"label":"March 14","iso":"2027-03-14","done":false,"a":[],"b":[]},
+    {"label":"April 4","iso":"2027-04-04","done":false,"a":[],"b":[]},
+    {"label":"May 2","iso":"2027-05-02","done":false,"a":[],"b":[]},
+    {"label":"May 9","iso":"2027-05-09","done":false,"a":[],"b":[]}
+  ]};
+  var GROUPS = [{k:'a', name:'Rishonim · K–2'}, {k:'b', name:'3rd + 4th · 5th + 6th'}];
+  var SLOTS = 5;
+  // Holidays (start/end inclusive). A holiday shows on any session within 3 weeks of it, before or after.
+  var HOLIDAYS = [
+    {name:'Rosh Hashanah', start:'2026-09-11', end:'2026-09-13', label:'Sept 11–13'},
+    {name:'Yom Kippur', start:'2026-09-20', end:'2026-09-21', label:'Sept 20–21'},
+    {name:'Sukkot', start:'2026-09-25', end:'2026-10-02', label:'Sept 25–Oct 2'},
+    {name:'Shemini Atzeret / Simchat Torah', start:'2026-10-02', end:'2026-10-04', label:'Oct 2–4'},
+    {name:'Chanukah', start:'2026-12-04', end:'2026-12-12', label:'Dec 4–12'},
+    {name:'Tu BiShvat', start:'2027-01-22', end:'2027-01-23', label:'Jan 22–23'},
+    {name:'Purim', start:'2027-03-22', end:'2027-03-23', label:'Mar 22–23'},
+    {name:'Passover', start:'2027-04-21', end:'2027-04-29', label:'Apr 21–29'},
+    {name:'Yom HaAtzmaut', start:'2027-05-11', end:'2027-05-12', label:'May 11–12'}
+  ];
+  var WINDOW_DAYS = 21;
+  function dayNum(iso){ return Math.round(Date.parse(iso + 'T12:00:00Z') / 86400000); }
+  function holidaysFor(i, dates){
+    var day = dayNum(dates[i].iso);
+    return HOLIDAYS.filter(function(h){
+      return dayNum(h.end) >= day - WINDOW_DAYS && dayNum(h.start) <= day + WINDOW_DAYS;
+    }).map(function(h){
+      var when = dayNum(h.end) < day ? 'past' : (dayNum(h.start) > day ? 'upcoming' : 'now');
+      return {name:h.name, label:h.label, when:when};
+    });
+  }
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  var LOCAL_KEY = 'betc-songleading-data';
+  var CLOUD = !!SCRIPT_URL;
+
+  var root = document.getElementById('root');
+  var statusEl = document.getElementById('status');
+  var state = null, version = 0, pass = 'change-me'; // matches PASSCODE in the Apps Script
+  var dirty = false, saving = false, blocked = false, timer = null;
+  var collapsed = null; // per view only, never saved
+  var CHEV = '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
+
+  function store(k, v){ try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) { return null; } }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function dow(iso){ var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-US', {weekday:'long'}) + ' · ' + d.getFullYear(); }
+  function normalize(s){
+    s = JSON.parse(JSON.stringify(s));
+    s.dates.forEach(function(d){ GROUPS.forEach(function(g){
+      var arr = d[g.k] || []; while (arr.length < SLOTS) arr.push({t:'', p:false}); d[g.k] = arr.slice(0, SLOTS);
+    }); });
+    return s;
+  }
+  function showStatus(text, isErr, actionLabel, action){
+    statusEl.hidden = !text;
+    statusEl.className = 'status' + (isErr ? ' err' : '');
+    statusEl.innerHTML = '<span>' + esc(text || '') + '</span>';
+    if (actionLabel){
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.textContent = actionLabel;
+      b.onclick = action; statusEl.appendChild(b);
+    }
+  }
+
+  function api(body){
+    body.pass = pass;
+    return fetch(SCRIPT_URL, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)})
+      .then(function(r){ return r.json(); });
+  }
+
+  function loadCloud(){
+    showStatus('Loading…');
+    api({action:'load'}).then(function(res){
+      if (!res.ok && res.error === 'bad_pass'){ showStatus('The Google Sheet script rejected the page. Make sure PASSCODE in the script is still change-me.', true); return; }
+      if (!res.ok) throw new Error(res.error || 'load failed');
+      version = res.version || 0;
+      state = normalize(res.state || SEED);
+      dirty = false; blocked = false;
+      render(); showStatus('');
+    }).catch(function(){
+      showStatus('Couldn’t connect to the Google Sheet script. Check that its access is set to Anyone.', true, 'Try again', function(){ loadCloud(); });
+    });
+  }
+
+  /* ---------- planner ---------- */
+  function render(){
+    var h = '';
+    h += '<header><div><div class="eyebrow">Songleading · 2026–27 school year</div><h1>BETC Song Plans</h1></div><div class="stats" id="stats"></div></header>';
+    if (!CLOUD) h += '<div class="notice">Changes are saved in this browser only. Connect the Google Sheet (see the setup line at the top of this file) so you and Penny share one copy.</div>';
+    h += '<div class="tools"><div class="legend"><span><span class="chip-c">' + CHECK + '</span>Session happened</span><span><span class="chip-p">Penny</span>Penny leads this song</span><span><span class="chip-j">Julie</span>You lead this song</span></div><div><button type="button" class="link" data-all="open">Expand all</button> · <button type="button" class="link" data-all="close">Collapse all</button></div></div>';
+    h += '<datalist id="songlist"></datalist><div class="list">';
+    if (!collapsed){
+      var narrow = window.matchMedia && window.matchMedia('(max-width: 640px)').matches;
+      var nx = state.dates.findIndex(function(d){ return !d.done; });
+      collapsed = state.dates.map(function(d, i){ return narrow && i !== nx; });
+    }
+    state.dates.forEach(function(d, i){
+      h += '<section class="session' + (d.done ? ' done' : '') + (collapsed[i] ? ' collapsed' : '') + '" id="sess-' + i + '">';
+      h += '<div class="when"><button type="button" class="check" data-i="' + i + '" aria-pressed="' + !!d.done + '" aria-label="Mark ' + esc(d.label) + ' as happened">' + CHECK + '</button>';
+      h += '<button type="button" class="head" data-toggle="' + i + '" aria-expanded="' + !collapsed[i] + '"><span class="head-top"><span class="date">' + esc(d.label) + '</span>' + CHEV + '</span><span class="dow"><span>' + dow(d.iso) + '</span><span class="next" id="next-' + i + '" hidden>Next up</span></span>' + (function(){ var hs = holidaysFor(i, state.dates); return hs.length ? '<span class="hol"><b>Relevant holidays</b>' + hs.map(function(h){ return '<span class="h ' + h.when + '">' + esc(h.name) + ' · ' + h.label + '<i>' + (h.when === 'past' ? 'just passed' : h.when === 'now' ? 'happening now' : 'coming up') + '</i></span>'; }).join('') + '</span>' : ''; })() + '<span class="sum" id="sum-' + i + '"></span></button></div><div class="groups">';
+      GROUPS.forEach(function(g){
+        h += '<div class="grp"><div class="grp-label">' + g.name + '</div><ol class="songs">';
+        d[g.k].forEach(function(s, j){
+          var id = i + '-' + g.k + '-' + j;
+          h += '<li><span class="n">' + (j + 1) + '</span>';
+          h += '<input id="s-' + id + '" data-i="' + i + '" data-g="' + g.k + '" data-j="' + j + '" list="songlist" autocomplete="off" placeholder="Song" aria-label="' + esc(d.label) + ', ' + g.name + ', song ' + (j + 1) + '" value="' + esc(s.t) + '">';
+          h += '<button type="button" class="penny" data-i="' + i + '" data-g="' + g.k + '" data-j="' + j + '" aria-pressed="' + !!s.p + '" title="Penny leads this song" aria-label="Penny leads song ' + (j + 1) + '"><span class="short">P</span><span class="full">Penny</span></button>';
+          h += '<button type="button" class="julie" data-i="' + i + '" data-g="' + g.k + '" data-j="' + j + '" aria-pressed="' + !!s.j + '" title="Julie leads this song" aria-label="Julie leads song ' + (j + 1) + '"><span class="short">J</span><span class="full">Julie</span></button></li>';
+        });
+        h += '</ol></div>';
+      });
+      h += '</div></section>';
+    });
+    h += '</div>';
+    root.innerHTML = h;
+    root.classList.remove('ro');
+    refresh();
+  }
+
+  function refresh(){
+    var done = 0, songs = 0, penny = 0, julie = 0, titles = {};
+    state.dates.forEach(function(d){
+      if (d.done) done++;
+      GROUPS.forEach(function(g){ d[g.k].forEach(function(s){ var t = (s.t || '').trim(); if (t){ songs++; titles[t.toLowerCase()] = t; if (s.p) penny++; if (s.j) julie++; } }); });
+    });
+    document.getElementById('stats').innerHTML =
+      '<span class="stat"><b>' + done + '</b> of ' + state.dates.length + ' sessions done</span>' +
+      '<span class="stat"><b>' + songs + '</b> songs planned</span>' +
+      '<span class="stat"><b>' + penny + '</b> led by Penny</span>' +
+      '<span class="stat"><b>' + julie + '</b> led by you</span>';
+    var nextIdx = state.dates.findIndex(function(d){ return !d.done; });
+    state.dates.forEach(function(d, i){
+      document.getElementById('next-' + i).hidden = i !== nextIdx;
+      var ca = d.a.filter(function(s){ return (s.t || '').trim(); }).length;
+      var cb = d.b.filter(function(s){ return (s.t || '').trim(); }).length;
+      var cp = d.a.concat(d.b).filter(function(s){ return (s.t || '').trim() && s.p; }).length;
+      var cj = d.a.concat(d.b).filter(function(s){ return (s.t || '').trim() && s.j; }).length;
+      document.getElementById('sum-' + i).textContent = (ca + cb) ? ('K–2: ' + ca + ' · 3–6: ' + cb + (cp ? ' · Penny: ' + cp : '') + (cj ? ' · Julie: ' + cj : '')) : 'No songs yet';
+    });
+    document.getElementById('songlist').innerHTML = Object.keys(titles).sort().map(function(k){ return '<option value="' + esc(titles[k]) + '">'; }).join('');
+  }
+
+  function changed(){
+    if (blocked) return;
+    dirty = true;
+    showStatus('Unsaved changes…');
+    clearTimeout(timer);
+    timer = setTimeout(save, 1200);
+  }
+
+  function save(){
+    if (!dirty || blocked) return;
+    if (!CLOUD){
+      store(LOCAL_KEY, JSON.stringify(state)); dirty = false; showStatus('Saved in this browser');
+      setTimeout(function(){ if (!dirty) showStatus(''); }, 1800); return;
+    }
+    if (saving){ clearTimeout(timer); timer = setTimeout(save, 800); return; }
+    saving = true; dirty = false; showStatus('Saving…');
+    api({action:'save', baseVersion:version, state:state}).then(function(res){
+      saving = false;
+      if (res.ok){ version = res.version; if (dirty) { timer = setTimeout(save, 400); return; } showStatus('Saved'); setTimeout(function(){ if (!dirty && !saving) showStatus(''); }, 1800); return; }
+      if (res.error === 'stale'){
+        blocked = true; root.classList.add('ro');
+        showStatus('Penny (or another device) saved changes since you opened this. Load the latest, then redo your last edit.', true, 'Load latest', function(){ loadCloud(); });
+        return;
+      }
+      if (res.error === 'bad_pass'){ showStatus('The Google Sheet script rejected the save. Make sure PASSCODE in the script is still change-me.', true); return; }
+      throw new Error(res.error);
+    }).catch(function(){
+      saving = false; dirty = true;
+      showStatus('That save didn’t reach the Google Sheet script. Try again in a moment.', true, 'Try again', save);
+    });
+  }
+
+  root.addEventListener('click', function(e){
+    var b = e.target.closest('button');
+    if (!b || !state) return;
+    if (b.dataset.toggle !== undefined){
+      var t = +b.dataset.toggle; collapsed[t] = !collapsed[t];
+      document.getElementById('sess-' + t).classList.toggle('collapsed', collapsed[t]);
+      b.setAttribute('aria-expanded', !collapsed[t]); return;
+    }
+    if (b.dataset.all){
+      var close = b.dataset.all === 'close';
+      state.dates.forEach(function(d, k){
+        collapsed[k] = close;
+        document.getElementById('sess-' + k).classList.toggle('collapsed', close);
+        document.querySelector('[data-toggle="' + k + '"]').setAttribute('aria-expanded', !close);
+      });
+      return;
+    }
+    if (blocked || !b.dataset.i) return;
+    var i = +b.dataset.i;
+    if (b.classList.contains('check')){
+      var d = state.dates[i]; d.done = !d.done;
+      b.setAttribute('aria-pressed', d.done);
+      document.getElementById('sess-' + i).classList.toggle('done', d.done);
+    } else if (b.classList.contains('penny')){
+      var s = state.dates[i][b.dataset.g][+b.dataset.j]; s.p = !s.p;
+      b.setAttribute('aria-pressed', s.p);
+    } else if (b.classList.contains('julie')){
+      var sj = state.dates[i][b.dataset.g][+b.dataset.j]; sj.j = !sj.j;
+      b.setAttribute('aria-pressed', sj.j);
+    } else return;
+    refresh(); changed();
+  });
+  root.addEventListener('input', function(e){
+    var el = e.target;
+    if (!el.dataset || el.dataset.i === undefined || !state || blocked) return;
+    state.dates[+el.dataset.i][el.dataset.g][+el.dataset.j].t = el.value;
+    changed();
+  });
+  root.addEventListener('change', function(e){ if (state && e.target.dataset && e.target.dataset.i !== undefined) refresh(); });
+
+  // Pick up the other person's changes when you come back to the tab.
+  document.addEventListener('visibilitychange', function(){
+    if (CLOUD && state && document.visibilityState === 'visible' && !dirty && !saving && !blocked){
+      api({action:'load'}).then(function(res){
+        if (res.ok && res.version !== version){ version = res.version; state = normalize(res.state || SEED); render(); }
+      }).catch(function(){});
+    }
+  });
+
+  /* ---------- start ---------- */
+  if (CLOUD){
+    loadCloud();
+  } else {
+    var saved = store(LOCAL_KEY);
+    try { state = normalize(saved ? JSON.parse(saved) : SEED); } catch (e) { state = normalize(SEED); }
+    render();
+  }
+})();
+</script>
+</body>
+</html>
